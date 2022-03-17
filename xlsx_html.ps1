@@ -26,12 +26,12 @@ TD {border-width: 1px; padding: 3px; border-style: solid; border-color: black;}
     Import-Csv $File | ConvertTo-Html -Head $Header | Out-File $n
 }
     
-Get-ChildItem C:\Users\Jankowskim\Projects\PS-Scripts\*.xlsx |
+Get-ChildItem .\*.xlsx |
 ForEach-Object {
-    ExcelToCsv -File $_
+    ExcelToCsv $_
 }
     
-Get-ChildItem C:\Users\Jankowskim\Projects\PS-Scripts\*.csv |
+Get-ChildItem .\*.csv |
 ForEach-Object {
-    CsvToHtml -File $_
+    CsvToHtml $_
 } 
