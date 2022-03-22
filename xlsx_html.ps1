@@ -15,7 +15,7 @@ Function CsvToJson ($File) {
     $x = $File | Select-Object Directory, BaseName
     $n = [System.IO.Path]::Combine($x.Directory, (($x.BaseName, 'json') -join "."))
 
-    Import-Csv $File | ConvertTo-Json | Out-File $n
+    Import-Csv $File | ConvertTo-Json -Compress | Out-File $n
 }
 
 Function CsvToHtml ($File) {
@@ -32,7 +32,9 @@ TD {border-width: 1px; padding: 3px; border-style: solid; border-color: black;}
 
     Import-Csv $File | ConvertTo-Html -Head $Header | Out-File $n
 }
-    
+
+########### Execute 
+
 Get-ChildItem .\*.xlsx |
 ForEach-Object {
     ExcelToCsv $_
